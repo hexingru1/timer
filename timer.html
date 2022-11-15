@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子时钟</title>
+    <style>
+        .box {
+            width: 650px;
+            height: 650px;
+            background: url(./时钟.jpg) no-repeat;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hour {
+            width: 10px;
+            height: 150px;
+            background-color: red;
+            border-radius: 5px;
+            position: absolute;
+            top: 200px;
+            left: 320px;
+            transform-origin: center 80%;
+        }
+
+        .minute {
+            width: 7px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 3px;
+            position: absolute;
+            top: 150px;
+            left: 321.5px;
+            transform-origin: center 80%;
+        }
+
+        .second {
+            width: 4px;
+            height: 220px;
+            background-color: black;
+            border-radius: 2px;
+            position: absolute;
+            top: 130px;
+            left: 323px;
+            transform-origin: center 85%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="pot'"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+
+
+    <script>
+        var hour = document.querySelector(".hour");
+        var minute = document.querySelector(".minute");
+        var second = document.querySelector(".second");
+
+        function sexTime() {
+            var now = new Date();  //获取当前时间
+            var nowHour = now.getHours();
+            var nowMin = now.getMinutes();
+            var nowSec = now.getSeconds();
+            console.log(nowHour, nowMin, nowSec);
+            hour.style.transform=`rotate(${nowHour*30+(30/60*nowMin)}deg)`
+            minute.style.transform=`rotate(${nowMin*6+(6/60*nowSec)}deg)`
+            second.style.transform=`rotate(${nowSec*6}deg)`
+            
+          
+
+        }
+        setInterval(sexTime,1000)
+        
+    </script>
+</body>
+
+</html>
